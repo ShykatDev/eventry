@@ -35,10 +35,12 @@ const Header = () => {
             </Link>
           ))}
 
-          <Button>
-            <SquaresPlusIcon className="size-5" />
-            Create Event
-          </Button>
+          <Link href="/create-event">
+            <Button>
+              <SquaresPlusIcon className="size-5" />
+              Create Event
+            </Button>
+          </Link>
 
           <Button variant="outline" size="icon">
             <SunIcon className="size-5" />
