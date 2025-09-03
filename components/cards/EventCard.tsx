@@ -1,14 +1,21 @@
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 import {
   ArrowUpRightIcon,
   BookmarkIcon,
   CalendarIcon,
 } from "@heroicons/react/24/outline";
 import Image from "next/image";
+import Link from "next/link";
 
-const EventCard = () => {
+const EventCard = ({ className }: { className?: string }) => {
   return (
-    <div className="border-x bg-background first:border-l-0 last:border-r-0">
+    <div
+      className={cn(
+        "border-x bg-background first:border-l-0 last:border-r-0",
+        className
+      )}
+    >
       <div className="border-b flex px-4 items-center justify-between">
         <span className="rounded-sm text-sm">Category</span>
         <span className="text-sm text-neutral-400 w-1/2 py-2 space-x-2 h-full text-end border-l">
@@ -35,15 +42,21 @@ const EventCard = () => {
           </span>
         </div>
       </div>
+      <div className="px-4 border-b text-sm text-neutral-400 flex justify-between items-center">
+        <span className="pl-4 border-l py-2">Interested People</span>
+        <span className="px-4 border-x py-2 bg-white/10">42</span>
+      </div>
       <div className="flex items-center justify-between text-sm bg-border/30">
         <Button variant="link">
           Book now
           <BookmarkIcon className="size-4" />
         </Button>
-        <Button variant="link" className="">
-          View details
-          <ArrowUpRightIcon className="size-4" />
-        </Button>
+        <Link href={"/events/1"}>
+          <Button variant="link" className="">
+            View details
+            <ArrowUpRightIcon className="size-4" />
+          </Button>
+        </Link>
       </div>
     </div>
   );

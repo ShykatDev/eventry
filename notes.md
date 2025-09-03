@@ -14,3 +14,9 @@
 # Module 2.2: Complete Homepage Design
 
 - Complete Bento-grid
+
+# Module 3: Event List page
+
+- Display list of events
+- Add search amd filters design
+- Create Event details page design

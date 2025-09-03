@@ -1,5 +1,13 @@
+import Section from "@/components/common/Section";
+import SectionGap from "@/components/common/SectionGap";
+
 const Page = () => {
-  return <div>Page</div>;
+  return (
+    <>
+      <SectionGap />
+      <Section>My events Page</Section>;
+    </>
+  );
 };
 
 export default Page;

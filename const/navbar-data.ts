@@ -1,4 +1,8 @@
-import { HomeIcon, ServerStackIcon } from "@heroicons/react/24/outline";
+import {
+  HomeIcon,
+  RectangleStackIcon,
+  ServerStackIcon,
+} from "@heroicons/react/24/outline";
 
 type NavbarItem = {
   label: string;
@@ -8,6 +12,7 @@ type NavbarItem = {
 
 const navbarData: NavbarItem = [
   { label: "Home", href: "/", icon: HomeIcon },
+  { label: "Events", href: "/events", icon: RectangleStackIcon },
   { label: "My Events", href: "/my-events", icon: ServerStackIcon },
 ];
 

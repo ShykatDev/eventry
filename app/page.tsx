@@ -10,8 +10,8 @@ export default function Page() {
     <>
       <Hero />
       <SectionGap />
-      <UpcomingEvents />
       <Clients />
+      <UpcomingEvents />
       <WhatWeAre />
       <SectionGap />
       <BannerCTA />

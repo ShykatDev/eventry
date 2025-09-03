@@ -1,10 +1,6 @@
 import Section from "@/components/common/Section";
 import { Button } from "@/components/ui/button";
-import {
-  ArrowDownRightIcon,
-  ArrowUpRightIcon,
-  SparklesIcon,
-} from "@heroicons/react/24/outline";
+import { ArrowUpRightIcon, SparklesIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 
 const Hero = () => {
@@ -12,8 +8,8 @@ const Hero = () => {
     <>
       <Section className="p-0">
         <div className="px-4 py-16 max-w-3xl mx-auto text-center">
-          <div className="flex items-center justify-center gap-2 text-sm text-amber-400 bg-amber-50/5 border border-amber-50/10 w-fit mx-auto px-4 py-1 rounded-2xl  mb-4">
-            <SparklesIcon className="size-4 text-amber-400" />
+          <div className="flex items-center justify-center gap-2 text-sm text-white bg-amber-200/10 border border-amber-50/10 w-fit mx-auto px-4 py-1 rounded-2xl  mb-4">
+            <SparklesIcon className="size-4 text-white" />
             <span className="text-xs">
               Turning Every Occasion into a Spark of Unforgettable Memories.
             </span>
@@ -33,7 +29,7 @@ const Hero = () => {
           <div className="mt-8 space-x-4">
             <Button variant="outline" className="">
               View Events
-              <ArrowDownRightIcon className="size-4" />
+              <ArrowUpRightIcon className="size-4" />
             </Button>
 
             <Button>
