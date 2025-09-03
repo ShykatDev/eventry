@@ -14,7 +14,7 @@ const Hero = () => {
         <div className="px-4 py-16 max-w-3xl mx-auto text-center">
           <div className="flex items-center justify-center gap-2 text-sm text-amber-400 bg-amber-50/5 border border-amber-50/10 w-fit mx-auto px-4 py-1 rounded-2xl  mb-4">
             <SparklesIcon className="size-4 text-amber-400" />
-            <span>
+            <span className="text-xs">
               Turning Every Occasion into a Spark of Unforgettable Memories.
             </span>
           </div>

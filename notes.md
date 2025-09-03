@@ -10,3 +10,7 @@
 - Create Upcoming event section on Homepage
 - Create Our clients logo section
 - Create Bento-grid for different sections (about, social-proof, contact-form, team, social-links)
+
+# Module 2.2: Complete Homepage Design
+
+- Complete Bento-grid

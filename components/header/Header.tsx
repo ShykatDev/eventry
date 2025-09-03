@@ -16,8 +16,8 @@ const Header = () => {
   const pathName = usePathname();
 
   return (
-    <Section>
-      <div className="flex items-center justify-between">
+    <Section className="py-2">
+      <nav className="flex items-center justify-between">
         <Logo />
 
         <div className="flex items-center gap-4">
@@ -50,7 +50,7 @@ const Header = () => {
             <span className="text-xs">ctrl+k</span>
           </Button>
         </div>
-      </div>
+      </nav>
     </Section>
   );
 };

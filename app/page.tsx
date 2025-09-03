@@ -1,4 +1,5 @@
 import SectionGap from "@/components/common/SectionGap";
+import BannerCTA from "@/components/pages/Home/BannerCTA";
 import Clients from "@/components/pages/Home/Clients";
 import Hero from "@/components/pages/Home/Hero";
 import UpcomingEvents from "@/components/pages/Home/UpcomingEvents";
@@ -12,6 +13,8 @@ export default function Page() {
       <UpcomingEvents />
       <Clients />
       <WhatWeAre />
+      <SectionGap />
+      <BannerCTA />
     </>
   );
 }
