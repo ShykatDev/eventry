@@ -38,3 +38,5 @@
 - Sync data over the app
 - Use localstorage
 - Create "My Events" page and add data into it.
+
+# Module 6.1: Create global loading, error page
