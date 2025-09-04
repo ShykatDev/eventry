@@ -1,17 +1,17 @@
 import { eventsData } from "@/const/events";
+import { eventsDataType } from "@/types/dataTypes";
+import { NextResponse } from "next/server";
 
-type Params = { params: { id: string } };
+type Params = { id: string };
 
-export async function GET(req: Request, { params }: Params) {
-  const { id } = params;
+export async function GET(req: Request, context: { params: Promise<Params> }) {
+  const { id } = await context.params;
 
-  const event = eventsData.find((_, index) => String(index + 1) === id);
+  const event = eventsData.find((e: eventsDataType) => String(e._id) === id);
 
   if (!event) {
-    return new Response(JSON.stringify({ error: "Event not found" }), {
-      status: 404,
-    });
+    return NextResponse.json({ error: "Event not found" }, { status: 404 });
   }
 
-  return Response.json(event);
+  return NextResponse.json(event);
 }
