@@ -39,7 +39,7 @@ const Hero = () => {
           </div>
         </div>
 
-        <div className="p-4 bg-border/50">
+        <div className="p-4 bg-border/50 border-t">
           <div className="h-[400px] relative ">
             <Image
               src={"/assets/hero-2.jpg"}

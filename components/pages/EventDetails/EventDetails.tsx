@@ -1,11 +1,11 @@
+"use client";
 import BackButton from "@/components/common/BackButton";
 import Section from "@/components/common/Section";
 import SectionGap from "@/components/common/SectionGap";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
-import config from "@/config";
 import { audienceOptions } from "@/const/static";
-import { eventsDataType } from "@/types/dataTypes";
+import { useEvents } from "@/hooks/useEvents";
 import {
   BookmarkIcon,
   CalendarIcon,
@@ -17,16 +17,11 @@ import {
 } from "@heroicons/react/24/outline";
 import Image from "next/image";
 
-const EventDetails = async ({ eventId }: { eventId?: string }) => {
-  const res = await fetch(`${config.BASE}/api/events/${eventId}`, {
-    cache: "no-store",
-  });
+const EventDetails = ({ eventId }: { eventId?: string }) => {
+  const { events } = useEvents();
+  const event = events.find((item) => String(item._id) === eventId);
 
-  if (!res.ok) {
-    throw new Error("Failed to fetch events");
-  }
-
-  const event: eventsDataType = await res.json();
+  if (!event) return <Section>loading...</Section>;
 
   return (
     <>
@@ -143,16 +138,24 @@ const EventDetails = async ({ eventId }: { eventId?: string }) => {
                     {event.interested_people} peopre are going
                   </span>
                   <div className="border-x flex divide-x">
-                    {[...Array(10)].map((_, index) => (
+                    {[
+                      ...Array(
+                        event.interested_people < 10
+                          ? event.interested_people
+                          : 10
+                      ),
+                    ].map((_, index) => (
                       <div key={index} className="p-2 ">
                         <Avatar className="rounded-none">
                           <AvatarImage src="https://github.com/shadcn.png" />
                         </Avatar>
                       </div>
                     ))}
-                    <span className="py-2 px-3 bg-border text-sm inline-flex items-center">
-                      82+
-                    </span>
+                    {event.interested_people > 10 && (
+                      <span className="py-2 px-3 bg-border text-sm inline-flex items-center">
+                        {event.interested_people - 10}+
+                      </span>
+                    )}
                   </div>
                 </div>
 
@@ -183,6 +186,62 @@ const EventDetails = async ({ eventId }: { eventId?: string }) => {
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </Section>
+      <Section className="p-0">
+        <div className=" py-4">
+          <div className="px-4 border-y">
+            <div className="p-4 border-x space-y-4">
+              <div className="">
+                <p className="text-neutral-200">
+                  Important information from us
+                </p>
+              </div>
+              <span className="block text-neutral-400">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                Temporibus iure, saepe expedita labore molestiae autem officiis
+                excepturi ratione quod voluptatem voluptatibus ipsum voluptate!
+                Velit, veniam! Suscipit ipsam iure, harum accusantium dicta
+                nihil eligendi sit nisi unde iste, deleniti quos perspiciatis
+                aperiam, neque debitis adipisci ducimus possimus molestiae
+                expedita aut aliquid quaerat nam ex doloremque? Exercitationem
+                soluta veritatis laudantium commodi temporibus harum culpa
+                expedita qui consectetur, voluptatibus possimus pariatur ratione
+                similique sunt. Quaerat consequuntur atque totam laudantium, in
+                nemo itaque rerum mollitia doloremque rem hic, maxime incidunt.
+                Vero aperiam aliquid fuga ipsum hic beatae, delectus sequi nemo
+                placeat voluptatum ratione libero.
+              </span>
+
+              <span className="block text-neutral-400">
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ad
+                placeat dolorum quas architecto voluptas eaque dignissimos
+                quisquam, illo nesciunt nemo veniam quos totam hic quasi fugiat
+                voluptate impedit? Voluptatum placeat, distinctio obcaecati iure
+                error rem ex quod aspernatur cumque similique consectetur non
+                esse iusto, molestiae et dolores fuga. Ratione, iure aut eveniet
+                sunt quaerat totam praesentium quasi reiciendis eaque cumque
+                inventore omnis laudantium placeat tempora culpa dolore officia
+                distinctio autem magni dignissimos. Fugit incidunt expedita
+                dignissimos qui hic eligendi consequuntur rerum quam. Doloremque
+                eos veniam temporibus velit minima deleniti commodi ratione
+                tenetur praesentium ducimus obcaecati porro quaerat laudantium
+                rem placeat, nihil quas esse? Fugiat laudantium veritatis ipsum
+                reprehenderit consectetur facilis quidem repudiandae obcaecati,
+                earum nulla? Alias consectetur quis maxime amet! Cum odit atque
+                totam aperiam incidunt, consequuntur repellendus et ipsa,
+                provident sapiente voluptatum quisquam molestias quam aliquid
+                dicta expedita? Necessitatibus sint omnis, esse officia velit
+                quos quae porro mollitia dignissimos atque quas voluptatibus
+                obcaecati nesciunt neque praesentium autem ullam reiciendis,
+                explicabo in asperiores distinctio. Quos doloribus harum rem
+                illo alias quae sapiente, a tempore natus eveniet distinctio
+                eos, magnam eaque rerum inventore quam delectus aperiam ipsum?
+                Iste possimus assumenda molestiae minima repudiandae quos.
+                Consectetur temporibus neque esse quas nesciunt enim.
+              </span>
             </div>
           </div>
         </div>

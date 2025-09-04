@@ -1,5 +1,6 @@
 "use client";
 
+import { format } from "date-fns";
 import { ChevronDownIcon } from "lucide-react";
 import * as React from "react";
 
@@ -11,35 +12,52 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 
-export function DatePicker() {
+export function DatePicker({
+  name,
+  value,
+  onChange,
+}: {
+  name: string;
+  value?: Date;
+  onChange?: (date: Date) => void;
+}) {
   const [open, setOpen] = React.useState(false);
-  const [date, setDate] = React.useState<Date | undefined>(undefined);
 
   return (
     <div className="flex flex-col gap-3">
+      {/* Hidden input for FormData */}
+      <input
+        type="hidden"
+        name={name}
+        value={value ? format(value, "yyyy-MM-dd") : ""}
+      />
+
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
           <Button
             variant="outline"
-            id="date"
+            id={name}
             className="w-full justify-between font-normal inputBox"
           >
-            {date ? (
-              date.toLocaleDateString()
+            {value ? (
+              value.toLocaleDateString()
             ) : (
               <span className="text-neutral-600">Select date</span>
             )}
             <ChevronDownIcon className="text-neutral-600" />
           </Button>
         </PopoverTrigger>
+
         <PopoverContent className="w-auto overflow-hidden p-0" align="start">
           <Calendar
             mode="single"
-            selected={date}
+            selected={value}
             captionLayout="dropdown"
-            onSelect={(date) => {
-              setDate(date);
-              setOpen(false);
+            onSelect={(d) => {
+              if (d) {
+                onChange?.(d);
+                setOpen(false);
+              }
             }}
           />
         </PopoverContent>

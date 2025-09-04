@@ -31,3 +31,10 @@
 - Fetch dynamic data
 - Add filter and search working
 - Show details page data dynamically
+
+# Module 6: Make create form functional
+
+- Add data via creating form
+- Sync data over the app
+- Use localstorage
+- Create "My Events" page and add data into it.

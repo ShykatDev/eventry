@@ -1,21 +1,20 @@
+"use client";
 import EventCard from "@/components/cards/EventCard";
 import Section from "@/components/common/Section";
 import { Button } from "@/components/ui/button";
-import config from "@/config";
+import { useEvents } from "@/hooks/useEvents";
 import { cn } from "@/lib/utils";
-import { eventsDataType } from "@/types/dataTypes";
 import { ServerStackIcon } from "@heroicons/react/24/outline";
+import Link from "next/link";
 
-const UpcomingEvents = async () => {
-  const res = await fetch(`${config.BASE}/api/events`, {
-    cache: "no-store",
-  });
+const UpcomingEvents = () => {
+  const { events } = useEvents();
 
-  if (!res.ok) throw new Error("Failed to fetch events");
+  const upcomingEvent = events
+    .filter((item) => item.status === "upcoming")
+    .slice(0, 4);
 
-  const events: eventsDataType[] = await res.json();
-
-  const upcomingEvent = events.filter((item) => item.status === "upcoming");
+  console.log(events);
 
   return (
     <>
@@ -28,16 +27,18 @@ const UpcomingEvents = async () => {
               <EventCard
                 event={event}
                 key={index}
-                className={cn(index < 4 && "last:border-r")}
+                className={cn(index < 3 && "last:border-r")}
               />
             ))}
           </div>
 
           <div className="flex justify-center py-8">
-            <Button variant="outline" className="">
-              <ServerStackIcon className="size-5" />
-              View all events
-            </Button>
+            <Link href="/events">
+              <Button variant="outline" className="">
+                <ServerStackIcon className="size-5" />
+                View all events
+              </Button>
+            </Link>
           </div>
         </Section>
       )}

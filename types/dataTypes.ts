@@ -1,4 +1,4 @@
-import { audienceOptions, categoryOptions } from "@/const/static";
+import { audienceOptions } from "@/const/static";
 
 export type AboutFeaturesType = {
   icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
@@ -15,7 +15,6 @@ export type SelectOptionsType = {
   value: string;
 }[];
 
-type CategoryType = (typeof categoryOptions)[number]["value"];
 type AudienceType = (typeof audienceOptions)[number]["value"];
 
 export type eventsDataType = {
@@ -25,13 +24,14 @@ export type eventsDataType = {
   group: {
     organization: string;
     mode: string;
-    category: CategoryType;
+    category: "conference" | "workshop" | "meetup";
     audience: AudienceType;
-    helpline: number;
+    helpline: string;
   };
   location: string;
   date: string;
   time: string;
   status: "ongoing" | "upcoming" | "completed";
   interested_people: number;
+  createdByMe?: boolean;
 };

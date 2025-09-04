@@ -2,60 +2,45 @@
 
 import EventCard from "@/components/cards/EventCard";
 import { Input } from "@/components/ui/input";
-import config from "@/config";
 import { categoryOptions } from "@/const/static";
-import { eventsDataType } from "@/types/dataTypes";
+import { useEvents } from "@/hooks/useEvents";
+import { cn } from "@/lib/utils";
 import { MagnifyingGlassIcon, NoSymbolIcon } from "@heroicons/react/24/outline";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
-type Props = {
-  events: eventsDataType[];
-  currentFilters?: { title?: string; category?: string };
-};
-
-export default function EventsFilter({
-  events: initialEvents,
-  currentFilters,
-}: Props) {
+export default function EventsFilter() {
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  const [events, setEvents] = useState<eventsDataType[]>(initialEvents);
   const [loading, setLoading] = useState(false);
+
+  const { events: initialEvents } = useEvents();
+  const [events, setEvents] = useState(initialEvents);
 
   const title = searchParams.get("title") || "";
   const category = searchParams.get("category") || "";
 
-  const fetchEvents = async () => {
-    setLoading(true);
-    const params = new URLSearchParams();
-    if (title) params.append("title", title);
-    if (category) params.append("category", category);
-
-    const res = await fetch(`${config.BASE}/api/events?${params.toString()}`, {
-      cache: "no-store",
-    });
-
-    if (!res.ok) {
-      setEvents([]);
-      setLoading(false);
-      return;
-    }
-
-    const data: eventsDataType[] = await res.json();
-    setEvents(data);
-    setLoading(false);
-  };
-
   useEffect(() => {
-    // Only fetch if initialEvents are empty or filters change
-    if (title || category) {
-      fetchEvents();
-    } else {
-      setEvents(initialEvents);
+    setLoading(true);
+
+    let filteredEvents = [...initialEvents];
+
+    if (title) {
+      filteredEvents = filteredEvents.filter((e) =>
+        e.title.toLowerCase().includes(title.toLowerCase())
+      );
     }
-  }, [title, category]);
+
+    if (category) {
+      filteredEvents = filteredEvents.filter(
+        (e) => e.group.category === category
+      );
+    }
+
+    setEvents(filteredEvents);
+    setLoading(false);
+  }, [title, category, initialEvents]);
 
   const handleFilterChange = (newCategory?: string, newTitle?: string) => {
     const params = new URLSearchParams();
@@ -65,29 +50,37 @@ export default function EventsFilter({
     router.push(`/events?${params.toString()}`);
   };
 
+  console.log(events, initialEvents);
+
   return (
     <>
       {/* Filters */}
       <div className="flex justify-between items-center px-4">
         <div className="border-x pl-4 flex items-center space-x-4 text-sm">
           <span className="py-4 pr-4 border-r">Filter by category</span>
+          <button
+            onClick={() => handleFilterChange(undefined, title)}
+            className={cn(
+              "p-4 cursor-pointer border-l border-r bg-border/30",
+              category === "" && "bg-foreground text-background"
+            )}
+          >
+            All
+          </button>
           {categoryOptions.map((item) => (
             <button
               key={item.value}
               onClick={() => handleFilterChange(item.value, title)}
-              className={`p-4 cursor-pointer border-l border-r ${
-                category === item.value ? "bg-border/50" : "bg-border/30"
-              }`}
+              className={cn(
+                "p-4 cursor-pointer border-l border-r",
+                category === item.value
+                  ? "bg-foreground text-background"
+                  : "bg-border/30"
+              )}
             >
               {item.label}
             </button>
           ))}
-          <button
-            onClick={() => handleFilterChange(undefined, title)}
-            className="p-4 cursor-pointer border-l border-r bg-border/30"
-          >
-            All
-          </button>
         </div>
 
         <div className="w-1/3 flex items-center bg-border/30 border-x border-border/50 focus-within:border-border transition duration-300 px-4 py-2">
@@ -112,13 +105,13 @@ export default function EventsFilter({
           </p>
         </div>
       ) : (
-        <div className="py-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 border-t px-2 gap-y-4">
+        <div className="py-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 border-t px-2 gap-y-4 items-stretch">
           {events.map((event, index) => (
             <div key={index} className="border-y px-4 -mx-2 last:border-r">
-              <div className="border-x px-0">
+              <div className="border-x px-0 h-full">
                 <EventCard
                   event={event}
-                  className="p-0 border-y-0 bg-border/30"
+                  className="p-0 border-y-0 bg-border/30 flex flex-col justify-between"
                 />
               </div>
             </div>

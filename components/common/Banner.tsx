@@ -9,7 +9,7 @@ const Banner = ({ src }: { src?: string | undefined }) => {
         height={340}
         alt="hero-image"
         priority
-        className=" w-full rounded-xl object-cover object-center"
+        className="h-[300px] w-full rounded-xl object-cover object-center"
       />
     </div>
   );
