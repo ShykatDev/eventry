@@ -25,3 +25,9 @@
 
 - Create a page for handle creating new event form
 - Change images for each section
+
+# Module 5: Start data fetching
+
+- Fetch dynamic data
+- Add filter and search working
+- Show details page data dynamically

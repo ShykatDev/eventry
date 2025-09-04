@@ -3,6 +3,9 @@ import Section from "@/components/common/Section";
 import SectionGap from "@/components/common/SectionGap";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
+import config from "@/config";
+import { audienceOptions } from "@/const/static";
+import { eventsDataType } from "@/types/dataTypes";
 import {
   BookmarkIcon,
   CalendarIcon,
@@ -14,7 +17,17 @@ import {
 } from "@heroicons/react/24/outline";
 import Image from "next/image";
 
-const EventDetails = () => {
+const EventDetails = async ({ eventId }: { eventId?: string }) => {
+  const res = await fetch(`${config.BASE}/api/events/${eventId}`, {
+    cache: "no-store",
+  });
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch events");
+  }
+
+  const event: eventsDataType = await res.json();
+
   return (
     <>
       <SectionGap />
@@ -30,6 +43,7 @@ const EventDetails = () => {
                     width={1000}
                     height={1000}
                     alt="hero-image"
+                    priority
                     className="h-full rounded-xl object-cover object-center"
                   />
                 </div>
@@ -37,18 +51,22 @@ const EventDetails = () => {
               <div className="w-full h-auto border-y">
                 <div className="px-4 h-full">
                   <div className="border-x h-full">
-                    {[...Array(5)].map((_, index) => {
+                    {Object.entries(event.group).map(([key, val], index) => {
                       return (
                         <div
                           key={index}
                           className="flex items-center justify-between border-b last:border-b-0"
                         >
-                          <div className="text-neutral-400 flex items-center gap-2 border-r px-4 py-2">
-                            <FireIcon className="size-5" />
-                            <span className="text-sm ">Organized By</span>
+                          <div className="text-neutral-400 flex items-center gap-2 border-r px-4 py-2 w-1/2 shrink-0">
+                            <FireIcon className="size-5 shrink-0" />
+                            <span className="text-sm capitalize">{key}</span>
                           </div>
-                          <span className="text-sm text-neutral-300 px-4 py-2">
-                            Redit Felm
+                          <span className="text-sm text-neutral-300 px-4 py-2 text-end capitalize">
+                            {key === "audience"
+                              ? audienceOptions.find(
+                                  (item) => item.value === val
+                                )?.label
+                              : val}
                           </span>
                         </div>
                       );
@@ -61,8 +79,7 @@ const EventDetails = () => {
               <div className="border-y">
                 <div className="px-4 border-b flex justify-between items-stretch gap-4">
                   <h1 className="px-4 border-l flex items-center text-neutral-200">
-                    TEDx Istanbul I Ideas worth spreading Inspiring talks
-                    spreading Inspiring talks spreading
+                    {event.title}
                   </h1>
                   <div className="flex shrink-0">
                     <button className="p-4 border-l text-sm bg-border/30 flex gap-2">
@@ -80,7 +97,7 @@ const EventDetails = () => {
                   <div className=" flex items-center gap-2 px-4 border-l py-2">
                     <CalendarIcon className="size-5" />
                     <span className="text-sm">
-                      20 September, 10.00 AM - 20 September, 8.00 PM
+                      {event.date} - {event.time}
                     </span>
                   </div>
 
@@ -99,10 +116,11 @@ const EventDetails = () => {
                   <div className="border bg-background w-2/3 text-neutral-400">
                     <span className="px-4 py-4 border-b w-full inline-flex gap-2 items-center">
                       <MapPinIcon className="size-5" />
-                      Sheraton Hotel & Resrurant
+                      {event.location}
                     </span>
-                    <p className="text-sm px-4 py-2 w-1/2">
-                      Banani 11, Block F, Level 9, Dhaka 1201, Bangladesh
+                    <p className="text-sm px-4 py-2 w-2/3">
+                      Please bring the invitation card which you will get after
+                      registration.
                     </p>
 
                     <button className="px-4 py-2 w-full text-start text-sm border-t flex gap-2">
@@ -122,7 +140,7 @@ const EventDetails = () => {
 
                 <div className="mt-4 border-y flex px-4 justify-between items-stretch">
                   <span className="px-4 py-2 border-l text-sm inline-flex items-center text-neutral-400">
-                    89 peopre are going
+                    {event.interested_people} peopre are going
                   </span>
                   <div className="border-x flex divide-x">
                     {[...Array(10)].map((_, index) => (
@@ -141,21 +159,7 @@ const EventDetails = () => {
                 <div className="mt-4 border-y">
                   <div className="px-4">
                     <p className="p-4 border-x px-4 text-neutral-400">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Facere, ex quos aperiam sapiente incidunt atque accusamus
-                      nihil ipsum inventore velit aut repellendus laudantium
-                      corrupti dolorum fugit necessitatibus a quo in eius quidem
-                      voluptate optio quod et aspernatur. Eius quo ratione
-                      reprehenderit distinctio animi id aliquam, mollitia rem
-                      quasi eum odio. Lorem ipsum dolor sit amet consectetur
-                      adipisicing elit. A nam est asperiores amet nemo
-                      voluptate! Repudiandae aliquid at consequatur iusto eos
-                      expedita dolorum recusandae voluptate ea. Iusto sequi
-                      repudiandae amet. Eos quidem quisquam veniam in ad saepe
-                      nihil, fuga soluta. Voluptas ea, incidunt possimus
-                      similique est ratione sed assumenda illo qui consectetur
-                      laborum natus. Molestias temporibus quos velit inventore
-                      facere?
+                      {event.description}
                     </p>
                   </div>
                 </div>

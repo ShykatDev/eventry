@@ -75,7 +75,7 @@ export const categoryOptions = [
   },
   {
     label: "Workshop",
-    value: "worksop",
+    value: "workshop",
   },
   {
     label: "Meetup",
@@ -86,7 +86,7 @@ export const categoryOptions = [
 export const audienceOptions = [
   {
     label: "Beginner",
-    value: "Beginner",
+    value: "beginner",
   },
   {
     label: "Professional",
