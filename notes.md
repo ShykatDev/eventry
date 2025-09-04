@@ -20,3 +20,8 @@
 - Display list of events
 - Add search amd filters design
 - Create Event details page design
+
+# Module 4: Create Event Page
+
+- Create a page for handle creating new event form
+- Change images for each section

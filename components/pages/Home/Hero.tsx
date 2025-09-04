@@ -40,13 +40,15 @@ const Hero = () => {
         </div>
 
         <div className="p-4 bg-border/50">
-          <Image
-            src={"/assets/hero.jpg"}
-            width={1080}
-            height={340}
-            alt="hero-image"
-            className=" w-full rounded-xl object-cover object-center"
-          />
+          <div className="h-[400px] relative ">
+            <Image
+              src={"/assets/hero-2.jpg"}
+              fill
+              quality={100}
+              alt="hero-image"
+              className="w-full rounded-xl object-cover object-center"
+            />
+          </div>
         </div>
       </Section>
     </>

@@ -22,9 +22,39 @@ const EventDetails = () => {
         <div className="">
           <BackButton className="py-2 text-sm cursor-pointer flex items-center gap-2 px-4 border-r w-fit" />
           <div className="border-y flex gap-4">
-            <div className="bg-border/30 p-4 w-1/3 shrink-0 min-h-[400px] flex items-center justify-center border-r">
-              <div className="w-full h-full rounded-2xl overflow-hidden border bg-background">
-                Image of event
+            <div className="bg-border/30 py-4 w-1/3 shrink-0 min-h-[400px] flex flex-col gap-4 items-center justify-center border-r">
+              <div className="px-4 w-full grow">
+                <div className="w-full h-full rounded-xl overflow-hidden border bg-background">
+                  <Image
+                    src={"/assets/details.jpg"}
+                    width={1000}
+                    height={1000}
+                    alt="hero-image"
+                    className="h-full rounded-xl object-cover object-center"
+                  />
+                </div>
+              </div>
+              <div className="w-full h-auto border-y">
+                <div className="px-4 h-full">
+                  <div className="border-x h-full">
+                    {[...Array(5)].map((_, index) => {
+                      return (
+                        <div
+                          key={index}
+                          className="flex items-center justify-between border-b last:border-b-0"
+                        >
+                          <div className="text-neutral-400 flex items-center gap-2 border-r px-4 py-2">
+                            <FireIcon className="size-5" />
+                            <span className="text-sm ">Organized By</span>
+                          </div>
+                          <span className="text-sm text-neutral-300 px-4 py-2">
+                            Redit Felm
+                          </span>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
               </div>
             </div>
             <div className="border-l py-4 grow">
@@ -81,10 +111,9 @@ const EventDetails = () => {
                     </button>
                   </div>
                   <div className="w-1/3 relative">
-                    <div className="w-full h-full bg-black/50 absolute top-0 left-0" />
                     <iframe
                       src="https://www.google.com/maps/embed"
-                      className="w-full h-full"
+                      className="w-full h-full opacity-30 hover:opacity-80 transition-all duration-300"
                       allowFullScreen={false}
                       loading="lazy"
                     />
@@ -109,7 +138,7 @@ const EventDetails = () => {
                   </div>
                 </div>
 
-                <div className="mt-4 border-t">
+                <div className="mt-4 border-y">
                   <div className="px-4">
                     <p className="p-4 border-x px-4 text-neutral-400">
                       Lorem ipsum dolor sit amet consectetur adipisicing elit.

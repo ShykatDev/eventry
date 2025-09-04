@@ -124,3 +124,7 @@
     cursor: pointer;
   }
 }
+
+.inputBox {
+  @apply border-border border-y-0 focus-visible:border rounded-none focus-visible:ring-0 placeholder:text-neutral-600 data-[placeholder]:text-sm data-[placeholder]:text-neutral-600;
+}

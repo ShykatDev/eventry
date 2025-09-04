@@ -5,7 +5,7 @@ const Page = () => {
   return (
     <>
       <SectionGap />
-      <Section>My events Page</Section>;
+      <Section>My events Page</Section>
     </>
   );
 };

@@ -6,7 +6,7 @@ const BannerCTA = () => {
   return (
     <Section className="p-0 bg-border/30">
       <div className="py-32">
-        <div className="border-y relative bg-background flex items-center">
+        <div className="border-y relative bg-background flex items-stretch">
           <div className="w-3/5">
             <div className="h-4 border-r" />
             <div className="pt-4 border-t border-r">
@@ -31,14 +31,14 @@ const BannerCTA = () => {
               <div className="h-4 border-r-0 border-t" />
             </div>
           </div>
-          <div className="py-4 w-2/5 border-y">
-            <div className="">
+          <div className="py-4 w-2/5 ">
+            <div className="border-y h-full">
               <Image
-                src={"/assets/event-header.jpg"}
+                src={"/assets/cta.jpg"}
                 width={1080}
-                height={340}
+                height={1000}
                 alt="hero-image"
-                className=" w-full object-cover object-center"
+                className="h-full object-cover object-center"
               />
             </div>
           </div>

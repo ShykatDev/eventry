@@ -56,3 +56,44 @@ export const socialLinks: SocialLinksType = [
     href: "#",
   },
 ];
+
+export const modeOptions = [
+  {
+    label: "Online",
+    value: "online",
+  },
+  {
+    label: "Offline",
+    value: "offline",
+  },
+];
+
+export const categoryOptions = [
+  {
+    label: "Conference",
+    value: "conference",
+  },
+  {
+    label: "Workshop",
+    value: "worksop",
+  },
+  {
+    label: "Meetup",
+    value: "meetup",
+  },
+];
+
+export const audienceOptions = [
+  {
+    label: "Beginner",
+    value: "Beginner",
+  },
+  {
+    label: "Professional",
+    value: "professional",
+  },
+  {
+    label: "Open for all",
+    value: "all",
+  },
+];

@@ -26,11 +26,11 @@ const EventCard = ({ className }: { className?: string }) => {
       <div className="border-b">
         <div className=" border-b bg-border/30">
           <Image
-            src={"/assets/event-header.jpg"}
+            src={"/assets/card.jpg"}
             width={1080}
             height={340}
             alt="hero-image"
-            className="h-24 w-full object-cover object-center "
+            className="h-32 w-full object-cover object-center "
           />
         </div>
         <div className="p-4">

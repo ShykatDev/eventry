@@ -1,6 +1,13 @@
-const SectionGap = () => {
+import { cn } from "@/lib/utils";
+
+const SectionGap = ({ className }: { className?: string }) => {
   return (
-    <div className="overflow-hidden h-8 w-full border-b flex items-center justify-between">
+    <div
+      className={cn(
+        "overflow-hidden h-8 w-full border-b flex items-center justify-between",
+        className
+      )}
+    >
       {[...Array(110)].map((_, index) => (
         <div
           key={index}
