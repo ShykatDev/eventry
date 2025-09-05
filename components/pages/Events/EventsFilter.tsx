@@ -85,7 +85,7 @@ export default function EventsFilter() {
           ))}
         </div>
 
-        <div className="sm:w-1/3 border-t sm:border-t-0 flex items-center bg-border/30 border-x border-border/50 focus-within:border-border transition duration-300 px-4 py-2">
+        <div className="w-full sm:w-1/3 border-t sm:border-t-0 flex items-center bg-border/30 border-x border-border/50 focus-within:border-border transition duration-300 px-4 py-2">
           <Input
             placeholder="Search events..."
             className="border-0 !bg-transparent focus-visible:ring-0 px-0"
