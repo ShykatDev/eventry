@@ -6,6 +6,7 @@ import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { audienceOptions } from "@/const/static";
 import { useEvents } from "@/hooks/useEvents";
+import { cn } from "@/lib/utils";
 import {
   BookmarkIcon,
   CalendarIcon,
@@ -17,13 +18,44 @@ import {
 } from "@heroicons/react/24/outline";
 import { CircleDotDashed } from "lucide-react";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 const EventDetails = ({ eventId }: { eventId?: string }) => {
-  const { events } = useEvents();
+  const [isJoined, setIsJoined] = useState(false);
+  const { events, editEvent } = useEvents();
   const event = events.find((item) => String(item._id) === eventId);
 
-  if (!event) return <Section>loading...</Section>;
+  const checkJoined = () => {
+    if (!event?._id) return false;
+    const joined: number[] = JSON.parse(localStorage.getItem("joined") || "[]");
+    return joined.includes(event._id);
+  };
 
+  useEffect(() => {
+    setIsJoined(checkJoined());
+
+    const handleStorageChange = () => setIsJoined(checkJoined());
+    window.addEventListener("storage", handleStorageChange);
+
+    return () => window.removeEventListener("storage", handleStorageChange);
+  }, [event?._id]);
+
+  const handleJoin = () => {
+    if (!event?._id) return;
+
+    const joined: number[] = JSON.parse(localStorage.getItem("joined") || "[]");
+    if (!joined.includes(event._id)) {
+      joined.push(event._id);
+      localStorage.setItem("joined", JSON.stringify(joined));
+      setIsJoined(true);
+
+      editEvent(event._id, {
+        interested_people: event.interested_people + 1,
+      });
+    }
+  };
+
+  if (!event) return <Section>loading...</Section>;
   return (
     <>
       <SectionGap />
@@ -91,9 +123,16 @@ const EventDetails = ({ eventId }: { eventId?: string }) => {
                     {event.title}
                   </h1>
                   <div className="flex shrink-0 border-b md:border-b-0">
-                    <button className="p-4 w-1/2 sm:w-fit border-l text-sm bg-foreground text-background flex gap-2 justify-center">
+                    <button
+                      onClick={handleJoin}
+                      disabled={isJoined}
+                      className={cn(
+                        "p-4 w-1/2 sm:w-fit border-l text-sm bg-foreground text-background flex gap-2 justify-center disabled:opacity-65",
+                        isJoined && "bg-amber-200"
+                      )}
+                    >
                       <CheckBadgeIcon className="size-5" />
-                      Join event
+                      {isJoined ? "Joined" : "Join event"}
                     </button>
                     <button className="w-1/2 sm:w-fit p-4 border-x flex gap-2 text-sm bg-border/30 justify-center">
                       <BookmarkIcon className="size-5" />

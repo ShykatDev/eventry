@@ -64,7 +64,7 @@ export const eventsData: eventsDataType[] = [
       organization: "CodeLabs Bangladesh",
       mode: "Offline",
       category: "meetup",
-      audience: "developers",
+      audience: "professional",
       helpline: "+8801711556677",
     },
     location: "Tech Park, Dhaka, Bangladesh",

@@ -55,3 +55,7 @@
 # Module 7.1: Complete whole design
 
 - All page responsive design
+
+# Module 8: Join event
+
+- Add functionality for join a event
