@@ -44,9 +44,10 @@ const BaseInputBox = ({
 
 interface ChildProps {
   formik: FormikProps<EventFormValues>;
+  isEdit?: boolean;
 }
 
-const Form = ({ formik }: ChildProps) => {
+const Form = ({ formik, isEdit }: ChildProps) => {
   return (
     <form onSubmit={formik.handleSubmit} className="space-y-4 py-4">
       <BaseInputBox
@@ -77,9 +78,9 @@ const Form = ({ formik }: ChildProps) => {
         />
       </BaseInputBox>
 
-      <div className="flex items-center">
+      <div className="flex flex-col sm:flex-row items-center">
         <BaseInputBox
-          className="pr-2"
+          className="pr-4 sm:pr-2"
           label="Organization"
           error={formik.touched.organization ? formik.errors.organization : ""}
         >
@@ -94,7 +95,7 @@ const Form = ({ formik }: ChildProps) => {
         </BaseInputBox>
 
         <BaseInputBox
-          className="pl-2"
+          className="pl-4 sm:pl-2"
           label="Mode"
           error={formik.touched.mode ? formik.errors.mode : ""}
         >
@@ -108,9 +109,9 @@ const Form = ({ formik }: ChildProps) => {
         </BaseInputBox>
       </div>
 
-      <div className="flex items-center">
+      <div className="flex flex-col sm:flex-row items-center">
         <BaseInputBox
-          className="pr-2"
+          className="pr-4 sm:pr-2"
           label="Category"
           error={formik.touched.category ? formik.errors.category : ""}
         >
@@ -124,7 +125,7 @@ const Form = ({ formik }: ChildProps) => {
         </BaseInputBox>
 
         <BaseInputBox
-          className="pl-2"
+          className="pl-4 sm:pl-2"
           label="Audience"
           error={formik.touched.audience ? formik.errors.audience : ""}
         >
@@ -138,9 +139,9 @@ const Form = ({ formik }: ChildProps) => {
         </BaseInputBox>
       </div>
 
-      <div className="flex items-center">
+      <div className="flex flex-col sm:flex-row items-center">
         <BaseInputBox
-          className="pr-2"
+          className="pr-4 sm:pr-2"
           label="Location"
           error={formik.touched.location ? formik.errors.location : ""}
         >
@@ -155,7 +156,7 @@ const Form = ({ formik }: ChildProps) => {
         </BaseInputBox>
 
         <BaseInputBox
-          className="pl-2"
+          className="pl-4 sm:pl-2"
           label="Date"
           error={formik.touched.date ? formik.errors.date : ""}
         >
@@ -171,9 +172,9 @@ const Form = ({ formik }: ChildProps) => {
         </BaseInputBox>
       </div>
 
-      <div className="flex items-center">
+      <div className="flex flex-col sm:flex-row items-center">
         <BaseInputBox
-          className="pr-2"
+          className="pr-4 sm:pr-2"
           label="Time"
           error={formik.touched.time ? formik.errors.time : ""}
         >
@@ -189,7 +190,7 @@ const Form = ({ formik }: ChildProps) => {
         </BaseInputBox>
 
         <BaseInputBox
-          className="pl-2"
+          className="pl-4 sm:pl-2"
           label="Helpline"
           error={formik.touched.helpline ? formik.errors.helpline : ""}
         >
@@ -209,9 +210,9 @@ const Form = ({ formik }: ChildProps) => {
           <Button
             type="submit"
             disabled={formik.isSubmitting}
-            className="border-border rounded-none"
+            className="border-border rounded-none w-full sm:w-fit"
           >
-            Edit event
+            {isEdit ? "Edit" : "Create"} event
           </Button>
         </div>
       </div>

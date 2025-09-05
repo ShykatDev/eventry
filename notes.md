@@ -51,3 +51,7 @@
 # Module 7: Responsive design
 
 - Homepage responsive design
+
+# Module 7.1: Complete whole design
+
+- All page responsive design

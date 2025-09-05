@@ -117,7 +117,7 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply font-inter bg-background text-foreground;
+    @apply font-inter bg-background text-foreground overflow-x-hidden;
   }
 
   button {

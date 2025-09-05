@@ -30,7 +30,7 @@ const Clients = () => {
           {clientLogos.map((client, index) => (
             <div
               key={index}
-              className="w-40 h-18 bg-border/30 border-x shrink-0 flex items-center justify-center text-neutral-400 first:border-l-0 last:border-r-0 capitalize"
+              className="w-32 sm:w-40 h-18 bg-border/30 border-x shrink-0 flex items-center justify-center text-neutral-400 first:border-l-0 last:border-r-0 capitalize"
             >
               {client}
             </div>
@@ -38,7 +38,7 @@ const Clients = () => {
           {clientLogos.map((client, index) => (
             <div
               key={index}
-              className="w-40 h-18 bg-border/30 border-x shrink-0 flex items-center justify-center text-neutral-400 first:border-l-0 last:border-r-0 capitalize"
+              className="w-32 sm:w-40 h-18 bg-border/30 border-x shrink-0 flex items-center justify-center text-neutral-400 first:border-l-0 last:border-r-0 capitalize"
             >
               {client}
             </div>

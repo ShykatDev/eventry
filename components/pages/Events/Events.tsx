@@ -11,7 +11,7 @@ export default async function EventsPage() {
           <h1 className="py-2 text-xl border-b text-foreground/80">
             Discover All Events
           </h1>
-          <span className="p-4 border-x text-sm block max-w-3xl mx-auto text-neutral-400">
+          <span className="p-4 border-x text-xs sm:text-sm block max-w-3xl mx-auto text-neutral-400">
             Explore conferences, workshops, and meetups happening near you. Stay
             updated, connect with communities, and never miss an opportunity to
             learn and network.

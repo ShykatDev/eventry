@@ -9,7 +9,7 @@ const Hero = () => {
     <>
       <Section className="p-0">
         <div className="px-4 py-10 sm:py-16 max-w-3xl mx-auto text-center">
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-2 text-sm text-white bg-amber-100 dark:bg-amber-200/10 border border-amber-50/10 w-fit mx-auto px-4 py-1 rounded-2xl  mb-4">
+          <div className="hidden sm:flex flex-col sm:flex-row items-center justify-center gap-2 text-sm text-white bg-amber-100 dark:bg-amber-200/10 border border-amber-50/10 w-fit mx-auto px-2 sm:px-4 py-1 rounded-2xl mb-4">
             <SparklesIcon className="size-4 text-foreground shrink-0" />
             <span className="text-xs text-foreground">
               Turning Every Occasion into a Spark of Unforgettable Memories.

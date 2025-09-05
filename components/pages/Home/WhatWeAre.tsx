@@ -131,12 +131,12 @@ const WhatWeAre = () => {
         <BaseBoxLayout baseClassName="" className="flex items-center min-h-56">
           <div className="w-full flex items-center justify-center">
             <div className="border-y w-full py-4">
-              <div className="border-y flex justify-center gap-4 divide-x">
+              <div className="border-y flex flex-wrap justify-center gap-4 divide-x">
                 {socialLinks.map((link, index) => (
                   <Link
                     href={link.href}
                     key={index}
-                    className="hover:text-neutral-200 text-neutral-400 p-4 border-l last:border-r"
+                    className="hover:text-neutral-200 text-neutral-400 p-2 sm:p-4 border-l last:border-r"
                   >
                     <link.icon className="size-5" />
                   </Link>

@@ -11,7 +11,7 @@ const Page = async () => {
           <h1 className="py-2 text-xl border-b text-foreground/80">
             My Created Events
           </h1>
-          <span className="p-4 border-x text-sm block max-w-3xl mx-auto text-neutral-400">
+          <span className="p-4 border-x text-xs sm:text-sm block max-w-3xl mx-auto text-neutral-400">
             Manage the events you’ve created or joined. Keep track of details,
             update information, and stay connected with your audience.
           </span>

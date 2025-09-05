@@ -22,12 +22,15 @@ const UpcomingEvents = () => {
         <Section className="p-0">
           <span className="block text-xl p-4">Upcoming Events</span>
 
-          <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-4 border-y bg-border/30">
+          <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-4 border-y sm:bg-border/30">
             {upcomingEvent.map((event, index) => (
               <EventCard
                 event={event}
                 key={index}
-                className={cn(index < 3 && "last:border-r")}
+                className={cn(
+                  index < 3 &&
+                    "first:border-b border-t first:border-t-0 sm:border-t-0 sm:first:border-b-0 sm:last:border-r"
+                )}
               />
             ))}
           </div>

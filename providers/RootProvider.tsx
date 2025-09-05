@@ -1,6 +1,5 @@
 "use client";
 import SearchModal from "@/components/common/Search";
-import SectionGap from "@/components/common/SectionGap";
 import Footer from "@/components/footer/Footer";
 import Header from "@/components/header/Header";
 import { Toaster } from "@/components/ui/sonner";
@@ -15,10 +14,7 @@ export default function RootProvider({
   return (
     <EventsProvider initialEvents={eventsData}>
       <Header />
-      <div className="mt-[52px]">
-        <SectionGap />
-        {children}
-      </div>
+      <div className="mt-10 sm:mt-[52px]">{children}</div>
       <Footer />
       <SearchModal />
       <Toaster richColors />

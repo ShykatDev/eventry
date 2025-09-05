@@ -55,13 +55,15 @@ export default function EventsFilter() {
   return (
     <>
       {/* Filters */}
-      <div className="flex justify-between items-center px-4">
-        <div className="border-x pl-4 flex items-center space-x-4 text-sm">
-          <span className="py-4 pr-4 border-r">Filter by category</span>
+      <div className="flex flex-col sm:flex-row justify-between items-center px-4">
+        <div className="sm:border-x sm:pl-4 flex flex-wrap items-center sm:space-x-4 text-sm">
+          <span className="py-2 text-center sm:py-4 pr-4 border-x sm:border-l-0 sm:border-r w-full sm:w-fit">
+            Filter by category
+          </span>
           <button
             onClick={() => handleFilterChange(undefined, title)}
             className={cn(
-              "p-4 cursor-pointer border-l border-r bg-border/30",
+              "p-2 sm:p-4 cursor-pointer border-l border-r bg-border/30 w-full sm:w-fit",
               category === "" && "bg-foreground text-background"
             )}
           >
@@ -72,7 +74,7 @@ export default function EventsFilter() {
               key={item.value}
               onClick={() => handleFilterChange(item.value, title)}
               className={cn(
-                "p-4 cursor-pointer border-l border-r",
+                "p-2 sm:p-4 cursor-pointer border-l border-r w-full sm:w-fit",
                 category === item.value
                   ? "bg-foreground text-background"
                   : "bg-border/30"
@@ -83,7 +85,7 @@ export default function EventsFilter() {
           ))}
         </div>
 
-        <div className="w-1/3 flex items-center bg-border/30 border-x border-border/50 focus-within:border-border transition duration-300 px-4 py-2">
+        <div className="sm:w-1/3 border-t sm:border-t-0 flex items-center bg-border/30 border-x border-border/50 focus-within:border-border transition duration-300 px-4 py-2">
           <Input
             placeholder="Search events..."
             className="border-0 !bg-transparent focus-visible:ring-0 px-0"

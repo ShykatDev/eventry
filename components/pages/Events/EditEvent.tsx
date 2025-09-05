@@ -97,7 +97,7 @@ const EditEvent = ({ id }: { id: string }) => {
           parentClassName="border-b-0"
         >
           <div className="py-4 border-y px-0 bg-background">
-            <Form formik={formik} />
+            <Form formik={formik} isEdit={true} />
           </div>
         </Section>
       </Section>
