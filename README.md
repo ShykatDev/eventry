@@ -54,3 +54,8 @@
 - Get direction (Event details)
 - Follow Organization (Event details)
 - Share event (Event details)
+
+## Verdict
+
+- CRUD operations on events work well.
+- The performance and maintainability improve if backend endpoints are handled separately using Node.js and Express.js.
