@@ -16,13 +16,13 @@ const BaseBoxLayout: FC<BaseBoxLayoutProps> = ({
   title,
 }) => {
   return (
-    <div className={cn("border rounded-lg bg-background", baseClassName)}>
+    <div className={cn("border rounded-lg bg-background ", baseClassName)}>
       <div className="px-4">
         <div className="px-4 border-x h-4"></div>
       </div>
 
       <div className="px-4 border-t ">
-        <div className={cn("border-x min-h-54", className)}>
+        <div className={cn("border-x sm:min-h-54 ", className)}>
           {title && <h3 className="text-base border-b px-4 py-2">{title}</h3>}
           {children}
         </div>
@@ -36,8 +36,8 @@ const WhatWeAre = () => {
     <Section className="p-0">
       <span className="block text-xl p-4 ">What we are</span>
 
-      <div className="grid grid-cols-3 gap-2 p-2 border-t bg-border/30">
-        <BaseBoxLayout baseClassName="col-span-2" title="About">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-2 p-2 border-t bg-border/30 w-full overflow-hidden">
+        <BaseBoxLayout baseClassName="md:col-span-2" title="About">
           <div className="space-y-4">
             <div className="border-b p-4">
               <span className="text-sm text-neutral-400">
@@ -47,11 +47,11 @@ const WhatWeAre = () => {
                 delivered with speed, accuracy, and reliability.
               </span>
             </div>
-            <div className="grid grid-cols-4 gap-4 border-t">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:border-t">
               {aboutFeatures.map((feature, index) => (
                 <div
                   key={index}
-                  className="flex flex-col space-y-2 border-x first:border-l-0 last:border-r-0 p-4"
+                  className="flex flex-col space-y-2 border-x border-y md:border-y-0 first:border-l-0 last:border-r-0 p-4"
                 >
                   <feature.icon className="w-6 h-6 text-neutral-300" />
                   <span className="text-sm text-neutral-400">
@@ -94,7 +94,10 @@ const WhatWeAre = () => {
             </div>
           </div>
         </BaseBoxLayout>
-        <BaseBoxLayout baseClassName="" className="p-0 relative min-h-54">
+        <BaseBoxLayout
+          baseClassName="hidden sm:block"
+          className="p-0 relative min-h-54"
+        >
           <Image
             alt="dot"
             src="/assets/dot.png"
@@ -102,9 +105,9 @@ const WhatWeAre = () => {
             className="w-full object-cover"
           />
         </BaseBoxLayout>
-        <BaseBoxLayout baseClassName=" col-span-2" title="Contact Form">
+        <BaseBoxLayout baseClassName="md:col-span-2" title="Contact Form">
           <div className="border-y mt-4 w-full  bg-border/30 p-2 space-y-2">
-            <div className="flex gap-2">
+            <div className="flex flex-col md:flex-row gap-2">
               <Input
                 className="border-border rounded-sm placeholder:text-neutral-600 !bg-background"
                 placeholder="Enter full name"
@@ -142,7 +145,10 @@ const WhatWeAre = () => {
             </div>
           </div>
         </BaseBoxLayout>
-        <BaseBoxLayout baseClassName="" className="p-0 relative min-h-56">
+        <BaseBoxLayout
+          baseClassName="hidden sm:block"
+          className="p-0 relative min-h-56 "
+        >
           <Image
             alt="dot"
             src="/assets/dot.png"

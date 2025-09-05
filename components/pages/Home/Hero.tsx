@@ -8,14 +8,14 @@ const Hero = () => {
   return (
     <>
       <Section className="p-0">
-        <div className="px-4 py-16 max-w-3xl mx-auto text-center">
-          <div className="flex items-center justify-center gap-2 text-sm text-white bg-amber-100 dark:bg-amber-200/10 border border-amber-50/10 w-fit mx-auto px-4 py-1 rounded-2xl  mb-4">
-            <SparklesIcon className="size-4 text-foreground" />
+        <div className="px-4 py-10 sm:py-16 max-w-3xl mx-auto text-center">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-2 text-sm text-white bg-amber-100 dark:bg-amber-200/10 border border-amber-50/10 w-fit mx-auto px-4 py-1 rounded-2xl  mb-4">
+            <SparklesIcon className="size-4 text-foreground shrink-0" />
             <span className="text-xs text-foreground">
               Turning Every Occasion into a Spark of Unforgettable Memories.
             </span>
           </div>
-          <h1 className="text-5xl text-amber-200 font-medium">
+          <h1 className="text-2xl sm:text-3xl md:text-5xl text-amber-200 font-medium">
             <span className="underline">Eventry</span>
             <span className="ml-4 text-neutral-700 dark:text-neutral-300">
               Where Every Event Finds Its Spark{" "}
@@ -27,7 +27,7 @@ const Hero = () => {
             memorable.
           </p>
 
-          <div className="mt-8 space-x-4">
+          <div className="mt-8 flex flex-wrap justify-center gap-4">
             <Link href="/events">
               <Button variant="outline" className="">
                 View Events
@@ -43,7 +43,7 @@ const Hero = () => {
         </div>
 
         <div className="p-4 bg-border/50 border-t">
-          <div className="h-[400px] relative ">
+          <div className="h-[260px] sm:h-[400px] relative ">
             <Image
               src={"/assets/hero-2.jpg"}
               fill

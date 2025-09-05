@@ -22,7 +22,7 @@ const UpcomingEvents = () => {
         <Section className="p-0">
           <span className="block text-xl p-4">Upcoming Events</span>
 
-          <div className="grid grid-cols-4 gap-4 border-y bg-border/30">
+          <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-4 border-y bg-border/30">
             {upcomingEvent.map((event, index) => (
               <EventCard
                 event={event}
@@ -32,7 +32,7 @@ const UpcomingEvents = () => {
             ))}
           </div>
 
-          <div className="flex justify-center py-8">
+          <div className="flex justify-center py-4 sm:py-8">
             <Link href="/events">
               <Button variant="outline" className="">
                 <ServerStackIcon className="size-5" />

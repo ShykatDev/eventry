@@ -35,7 +35,7 @@ const Header = () => {
         <nav className="flex items-center justify-between">
           <Logo />
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 hidden">
             {navbarData.map((item, index) => (
               <Link
                 key={`nav-item-${index}`}
@@ -71,7 +71,6 @@ const Header = () => {
           </div>
         </nav>
       </Section>
-      {/* <SectionGap /> */}
     </div>
   );
 };

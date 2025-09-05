@@ -47,3 +47,7 @@
 - Theme change from dark to light
 - Global search implement
 - Refactor / optimize codes
+
+# Module 7: Responsive design
+
+- Homepage responsive design

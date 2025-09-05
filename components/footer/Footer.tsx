@@ -9,7 +9,7 @@ const Footer = () => {
     <>
       <SectionGap />
       <Section>
-        <footer className="flex justify-between w-full">
+        <footer className="flex items-center flex-col sm:flex-row justify-between w-full">
           <Logo />
           <div className="">
             <span className="text-xs text-neutral-400">
