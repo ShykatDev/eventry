@@ -15,6 +15,7 @@ import {
   PaperAirplaneIcon,
   ShareIcon,
 } from "@heroicons/react/24/outline";
+import { CircleDotDashed } from "lucide-react";
 import Image from "next/image";
 
 const EventDetails = ({ eventId }: { eventId?: string }) => {
@@ -46,6 +47,17 @@ const EventDetails = ({ eventId }: { eventId?: string }) => {
               <div className="w-full h-auto border-y">
                 <div className="px-4 h-full">
                   <div className="border-x h-full">
+                    <div className="flex items-center justify-between border-b last:border-b-0 bg-accent">
+                      <div className="text-neutral-400 flex items-center gap-2 border-r px-4 py-2 w-1/2 shrink-0">
+                        <CircleDotDashed className="size-5 shrink-0 animate-spin" />
+                        <span className="text-sm text-foreground/80 capitalize">
+                          Status
+                        </span>
+                      </div>
+                      <span className="text-sm text-foreground/80 px-4 py-2 text-end capitalize">
+                        {event.status}
+                      </span>
+                    </div>
                     {Object.entries(event.group).map(([key, val], index) => {
                       return (
                         <div
@@ -54,9 +66,11 @@ const EventDetails = ({ eventId }: { eventId?: string }) => {
                         >
                           <div className="text-neutral-400 flex items-center gap-2 border-r px-4 py-2 w-1/2 shrink-0">
                             <FireIcon className="size-5 shrink-0" />
-                            <span className="text-sm capitalize">{key}</span>
+                            <span className="text-sm capitalize text-neutral-400">
+                              {key}
+                            </span>
                           </div>
-                          <span className="text-sm text-neutral-300 px-4 py-2 text-end capitalize">
+                          <span className="text-sm text-neutral-400 px-4 py-2 text-end capitalize">
                             {key === "audience"
                               ? audienceOptions.find(
                                   (item) => item.value === val
@@ -73,11 +87,11 @@ const EventDetails = ({ eventId }: { eventId?: string }) => {
             <div className="border-l py-4 grow">
               <div className="border-y">
                 <div className="px-4 border-b flex justify-between items-stretch gap-4">
-                  <h1 className="px-4 border-l flex items-center text-neutral-200">
+                  <h1 className="px-4 border-l flex items-center text-foreground/80 font-medium text-xl">
                     {event.title}
                   </h1>
                   <div className="flex shrink-0">
-                    <button className="p-4 border-l text-sm bg-border/30 flex gap-2">
+                    <button className="p-4 border-l text-sm bg-foreground text-background flex gap-2">
                       <CheckBadgeIcon className="size-5" />
                       Join event
                     </button>
@@ -88,7 +102,7 @@ const EventDetails = ({ eventId }: { eventId?: string }) => {
                   </div>
                 </div>
 
-                <div className="border-b flex justify-between items-stretch px-4 mt-4 border-t">
+                <div className="border-b flex justify-between items-stretch px-4 mt-4 border-t ">
                   <div className=" flex items-center gap-2 px-4 border-l py-2">
                     <CalendarIcon className="size-5" />
                     <span className="text-sm">
@@ -96,7 +110,10 @@ const EventDetails = ({ eventId }: { eventId?: string }) => {
                     </span>
                   </div>
 
-                  <button className="px-4 border-x text-xs inline-flex items-center gap-2 text-neutral-400">
+                  <button
+                    disabled
+                    className="px-4 border-x text-xs inline-flex items-center gap-2 text-neutral-400 disabled:opacity-50 cursor-not-allowed"
+                  >
                     <Image
                       src="/assets/icons/google-calendar.png"
                       alt="google-calendar"
@@ -126,7 +143,7 @@ const EventDetails = ({ eventId }: { eventId?: string }) => {
                   <div className="w-1/3 relative">
                     <iframe
                       src="https://www.google.com/maps/embed"
-                      className="w-full h-full opacity-30 hover:opacity-80 transition-all duration-300"
+                      className="w-full h-full opacity-30 transition-all duration-300"
                       allowFullScreen={false}
                       loading="lazy"
                     />
@@ -195,7 +212,7 @@ const EventDetails = ({ eventId }: { eventId?: string }) => {
           <div className="px-4 border-y">
             <div className="p-4 border-x space-y-4">
               <div className="">
-                <p className="text-neutral-200">
+                <p className="text-foreground/80 font-medium">
                   Important information from us
                 </p>
               </div>

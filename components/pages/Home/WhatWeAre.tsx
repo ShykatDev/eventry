@@ -76,7 +76,7 @@ const WhatWeAre = () => {
                 </div>
 
                 <div className="border-l flex flex-col divide-y divide-border w-full">
-                  <span className="py-1 px-4 text-neutral-300 flex items-center gap-2">
+                  <span className="py-1 px-4 text-foreground/70 flex items-center gap-2">
                     4.7 rating out of 5
                     <Image
                       alt="google"
@@ -120,7 +120,7 @@ const WhatWeAre = () => {
             />
           </div>
           <div className="flex items-center h-full justify-center">
-            <button className="px-10 bg-border/30 hover:bg-border/20 cursor-pointer border-x py-2 text-neutral-300 text-sm">
+            <button className="px-10 bg-border/30 hover:bg-border/20 cursor-pointer border-x py-2 text-foreground text-sm">
               Submit
             </button>
           </div>

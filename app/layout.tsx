@@ -1,6 +1,3 @@
-import Footer from "@/components/footer/Footer";
-import Header from "@/components/header/Header";
-import { Toaster } from "@/components/ui/sonner";
 import RootProvider from "@/providers/RootProvider";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
@@ -26,13 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.variable} antialiased dark`}>
-        <RootProvider>
-          <Header />
-          {children}
-          <Footer />
-
-          <Toaster richColors />
-        </RootProvider>
+        <RootProvider>{children}</RootProvider>
       </body>
     </html>
   );

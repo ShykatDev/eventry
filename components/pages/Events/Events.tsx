@@ -8,8 +8,8 @@ export default async function EventsPage() {
     <>
       <Section className="py-0">
         <div className="border-x text-center">
-          <h1 className="py-2 text-xl border-b text-neutral-200">
-            Discover Upcoming Events
+          <h1 className="py-2 text-xl border-b text-foreground/80">
+            Discover All Events
           </h1>
           <span className="p-4 border-x text-sm block max-w-3xl mx-auto text-neutral-400">
             Explore conferences, workshops, and meetups happening near you. Stay

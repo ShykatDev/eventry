@@ -40,3 +40,10 @@
 - Create "My Events" page and add data into it.
 
 # Module 6.1: Create global loading, error page
+
+# Module 6.2: Search, theme workable and edit event
+
+- Event edit functionality workable
+- Theme change from dark to light
+- Global search implement
+- Refactor / optimize codes

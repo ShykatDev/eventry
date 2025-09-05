@@ -18,7 +18,7 @@ export type SelectOptionsType = {
 type AudienceType = (typeof audienceOptions)[number]["value"];
 
 export type eventsDataType = {
-  _id: number;
+  _id: number | undefined;
   title: string;
   description: string;
   group: {
@@ -34,4 +34,17 @@ export type eventsDataType = {
   status: "ongoing" | "upcoming" | "completed";
   interested_people: number;
   createdByMe?: boolean;
+};
+
+export type EventsContextType = {
+  events: eventsDataType[];
+  addEvent: (event: Omit<eventsDataType, "_id">) => void;
+  setEvents: React.Dispatch<React.SetStateAction<eventsDataType[]>>;
+  deleteEvent: (_id: number) => void;
+  editEvent: (
+    _id: number,
+    updatedData: Partial<Omit<eventsDataType, "_id">>
+  ) => void;
+  isOpen: boolean;
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };

@@ -1,6 +1,7 @@
 "use client";
 import Section from "@/components/common/Section";
 import SectionGap from "@/components/common/SectionGap";
+
 import { validationSchema } from "@/const/schema";
 import { useEvents } from "@/hooks/useEvents";
 import { eventsDataType } from "@/types/dataTypes";
@@ -9,62 +10,66 @@ import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import Form from "./Form";
 
-const CreateEvent = () => {
+const EditEvent = ({ id }: { id: string }) => {
   const router = useRouter();
-  const { addEvent } = useEvents();
+  const { events, editEvent } = useEvents();
+
+  const event: eventsDataType | undefined = events.find(
+    (item) => String(item._id) === id
+  );
 
   const formik = useFormik({
+    enableReinitialize: true,
     initialValues: {
-      title: "",
-      description: "",
-      organization: "",
-      mode: "",
-      category: "",
-      audience: "",
-      location: "",
-      date: "",
-      time: "00:00:00",
-      helpline: "",
-      createdByMe: true,
-      status: "" as "upcoming" | "ongoing" | "completed",
+      title: event?.title || "",
+      description: event?.description || "",
+      organization: event?.group.organization || "",
+      mode: event?.group.mode || "",
+      category: event?.group.category || "",
+      audience: event?.group.audience || "",
+      location: event?.location || "",
+      date: event?.date || "",
+      time: event?.time || "00:00:00",
+      helpline: event?.group.helpline || "",
+      createdByMe: event?.createdByMe ?? true,
+      status: event?.status || "upcoming",
     },
     validationSchema,
     onSubmit: async (values, { setSubmitting }) => {
       try {
         const newEvent: eventsDataType = {
-          _id: Date.now(),
-          interested_people: 0,
-          status: "upcoming",
+          _id: event?._id,
+          interested_people: event?.interested_people ?? 0,
+          status: values.status,
           date: values.date,
           time: values.time,
           description: values.description,
           title: values.title,
           location: values.location,
           group: {
-            organization: values.organization,
-            mode: values.mode,
-            category: values.category as "conference" | "workshop" | "meetup",
             audience: values.audience,
+            category: values.category as "conference" | "workshop" | "meetup",
             helpline: values.helpline,
+            mode: values.mode,
+            organization: values.organization,
           },
           createdByMe: values.createdByMe,
         };
 
         const promise = new Promise((resolve) => setTimeout(resolve, 2000));
         toast.promise(promise, {
-          loading: "Creating event...",
-          success: () => {
-            return `Event created successfully!`;
-          },
+          loading: "Saving event...",
+          success: () => "Event updated successfully!",
           error: "Error",
         });
-        addEvent(newEvent);
-        await new Promise((resolve) => setTimeout(resolve, 2000));
+
+        if (event?._id) editEvent(event._id, newEvent);
+        await promise;
 
         router.push("/my-events");
       } catch (error) {
         console.error(error);
-        toast.error("Event could not be created. Try again.");
+        toast.error("Event could not be saved. Try again.");
       }
       setSubmitting(false);
     },
@@ -76,7 +81,7 @@ const CreateEvent = () => {
       <Section className="py-0">
         <div className="border-x text-center">
           <h1 className="py-2 text-xl border-b text-foreground/80">
-            Create Your Event
+            Edit Your Event
           </h1>
           <span className="p-4 border-x text-sm block max-w-3xl mx-auto text-neutral-400">
             Fill out the details below to create your event. Once submitted,
@@ -100,4 +105,4 @@ const CreateEvent = () => {
   );
 };
 
-export default CreateEvent;
+export default EditEvent;

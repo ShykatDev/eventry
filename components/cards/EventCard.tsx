@@ -27,7 +27,7 @@ import {
 } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 
 const EventCard = ({
@@ -37,7 +37,7 @@ const EventCard = ({
   className?: string;
   event: eventsDataType;
 }) => {
-  const [alert, setAlert] = useState(false);
+  const router = useRouter();
   const { deleteEvent } = useEvents();
   return (
     <div
@@ -69,10 +69,12 @@ const EventCard = ({
                   Action
                 </DropdownMenuLabel>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem className="text-xs">Edit</DropdownMenuItem>
-                {/* <DropdownMenuItem onClick={() => deleteEvent(event._id)}>
-                  Delete
-                </DropdownMenuItem> */}
+                <DropdownMenuItem
+                  className="text-xs cursor-pointer"
+                  onClick={() => router.push(`/edit-event/${event._id}`)}
+                >
+                  Edit
+                </DropdownMenuItem>
                 <Dialog>
                   <DialogTrigger className="w-full hover:bg-border rounded py-1 text-start">
                     <span className="text-xs px-2">Delete</span>
@@ -99,7 +101,7 @@ const EventCard = ({
                           type="submit"
                           variant="destructive"
                           onClick={() => {
-                            deleteEvent(event._id);
+                            if (event?._id) deleteEvent(event._id);
                             toast.success("Event deleted successfully!");
                           }}
                         >

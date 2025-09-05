@@ -1,12 +1,7 @@
 import EventDetails from "@/components/pages/EventDetails/EventDetails";
 import config from "@/config";
 import { eventsDataType } from "@/types/dataTypes";
-
-type PageProps = {
-  params: {
-    id: string;
-  };
-};
+import { PageProps } from "@/types/propsTypes";
 
 export async function generateMetadata({ params }: PageProps) {
   const { id } = await params;

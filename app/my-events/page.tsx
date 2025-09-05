@@ -8,7 +8,7 @@ const Page = async () => {
     <>
       <Section className="py-0">
         <div className="border-x text-center">
-          <h1 className="py-2 text-xl border-b text-neutral-200">
+          <h1 className="py-2 text-xl border-b text-foreground/80">
             My Created Events
           </h1>
           <span className="p-4 border-x text-sm block max-w-3xl mx-auto text-neutral-400">
