@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Eventry
 
-## Getting Started
+## Eventry is an event management platform that simplifies event planning and organization.
 
-First, run the development server:
+## 🚀 Setup / Installation
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/ShykatDev/eventry.git
+   ```
+2. Navigate to the project folder:
+   cd your-repo
+3. Install packages:
+   npm install / yarn add
+4. Start development Server:
+   npm run dev / yarn dev
+5. Open http://localhost:3000
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+> **Note:** Don't forget to add .env file in the root of the project NEXT_PUBLIC_BASE_URL=http://localhost:3000
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+# Features
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Modern and Clear UI with responsive check
+- Theme toggler, Global Event Search box
+- Categorized Events
+- Create, Read, Update and Delete operation on each event
+- Use localstorage effectively
+- Use Context API for global state management
+- Give alert while deleting an event
+- Using toast messages for better UX
+- Event details and join funcitonality (Basic)
+- Use validation for form while creating or editing an event
+- Perform best practices and modular way to write code
+- Use SSR and CSR effectively
 
-## Learn More
+## What things can be performed?
 
-To learn more about Next.js, take a look at the following resources:
+- Theme toggle
+- Search and Filter events
+- Create, Edit and Delete event
+- View event details
+- Join a event
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## What things only for UI?
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Get started button (Hero Section)
+- Our clients logo (Homepage)
+- Contact Form (What we are section)
+- Social icons (What we are section)
+- Contact us button (Homepage)
+- Book now button (Event Card)
+- See event (Event details)
+- Add to calendar (Event details)
+- Get direction (Event details)
+- Follow Organization (Event details)
+- Share event (Event details)
